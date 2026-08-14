@@ -1,33 +1,5 @@
-const menuItems = [
-  {
-    label: "Dashboard",
-    icon: "▦",
-  },
-  {
-    label: "Transactions",
-    icon: "↔",
-  },
-  {
-    label: "Categories",
-    icon: "◉",
-  },
-  {
-    label: "Budgets",
-    icon: "▤",
-  },
-  {
-    label: "Goals",
-    icon: "◎",
-  },
-  {
-    label: "Reports",
-    icon: "◒",
-  },
-  {
-    label: "Settings",
-    icon: "⚙",
-  },
-];
+import { menuItems } from '@/general/Shared';
+import { NavLink } from 'react-router-dom';
 
 const Sidebar = () => {
   return (
@@ -52,19 +24,21 @@ const Sidebar = () => {
       <nav className="flex-1 px-4 py-6">
         <ul className="space-y-2">
           {menuItems.map((item) => (
-            <li key={item.label}>
-              <button
-                className={`flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm transition ${item.label === "Dashboard"
+            <li key={item.path}>
+              <NavLink
+                to={item.path}
+                className={({ isActive }) =>
+                  `flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm transition ${isActive
                     ? "bg-blue-600 text-white"
                     : "text-slate-400 hover:bg-slate-900 hover:text-white"
-                  }`}
-              >
+                  }`
+                }>
                 <span className="text-lg">
                   {item.icon}
                 </span>
 
                 <span>{item.label}</span>
-              </button>
+              </NavLink>
             </li>
           ))}
         </ul>

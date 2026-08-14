@@ -1,7 +1,7 @@
-import type { Transaction } from "@/types";
+import type { TransactionTypes } from "@/types";
 
 interface TransactionTableProps {
-  transactions: Transaction[];
+  transactions: TransactionTypes[];
 }
 
 const TransactionTable = ({ transactions }: TransactionTableProps) => {
